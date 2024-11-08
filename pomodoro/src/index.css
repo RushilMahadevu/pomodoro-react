@@ -1,0 +1,34 @@
+:root {
+  font-family: 'Chango';
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.title {
+  text-align: center;
+  font-size: 6rem;
+  font-weight: bold;
+  -webkit-text-stroke: 4.5px hsl(0, 0%, 20%);
+}
+
+.tomato {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 20%;
+}
+
+.timer {
+  font-family: Dangrek;
+  display: block;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 8rem;
+  -webkit-text-stroke: 4px hsl(0, 0%, 20%);
+}
