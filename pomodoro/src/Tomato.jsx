@@ -1,4 +1,4 @@
-import tomato from "./assets/tomato.png";
+import tomato from "./assets/tomato5.png";
 import { motion } from "framer-motion";
 
 const Tomato = () => {
@@ -6,7 +6,7 @@ const Tomato = () => {
     <motion.img
       initial={{ y: 25, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
+      transition={{ duration: 1, type: "spring", stiffness: 120 }}
       className="tomato"
       src={tomato}
       alt="tomato"
