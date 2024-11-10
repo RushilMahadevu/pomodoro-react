@@ -22,7 +22,7 @@ export default function Pomodoro() {
             setMinutes(minutes - 1);
           } else {
             let minutes = displayMessage ? 24 : 4;
-            let seconds = 59;
+            let seconds = 3;
             // 24 : 4
             setSeconds(seconds);
             setMinutes(minutes);
@@ -36,22 +36,34 @@ export default function Pomodoro() {
     return () => clearInterval(interval);
   }, [seconds, minutes, isRunning, displayMessage]);
 
+  useEffect(() => {
+    // Add this effect to handle body classes
+    if (displayMessage) {
+      document.body.classList.remove('focus-mode');
+      document.body.classList.add('break-mode');
+    } else {
+      document.body.classList.remove('break-mode');
+      document.body.classList.add('focus-mode');
+    }
+  }, [displayMessage]);
+  
+
   const timerMinutes = minutes < 10 ? `0${minutes}` : minutes;
   const timerSeconds = seconds < 10 ? `0${seconds}` : seconds;
 
   return (
-    <div className="timer-container">
+    <div className={`timer-container ${displayMessage ? 'break-mode' : 'focus-mode'}`}>
       <div className="timer">
         <motion.h1
-          initial={{ y: 25, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1,  type: "spring", stiffness: 120 }}
+          initial={{ y: 25}}
+          animate={{ y: 0}}
+          transition={{ duration: 1,  type: "spring", stiffness: 140 }}
           className="title"
         >
           {timerMinutes}:{timerSeconds}
         </motion.h1>
       </div>
-      <div className="button-container">
+      <div className="button-container">  
         <motion.button
           className="start-button"
           onClick={() => setIsRunning(true)}
@@ -59,7 +71,7 @@ export default function Pomodoro() {
           animate={{ y: 0, opacity: 1}}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          transition={{ duration: 1, type: "spring", stiffness: 400, damping: 17 }}
+          transition={{ duration: 1, type: "spring", stiffness: 140 }}
         >
           Start
         </motion.button>
@@ -71,7 +83,7 @@ export default function Pomodoro() {
           animate={{ y: 0, opacity: 1 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          transition={{ duration: 1, type: "spring", stiffness: 400, damping: 17 }}
+          transition={{ duration: 1, type: "spring", stiffness: 140 }}
         >
           Pause
         </motion.button>
@@ -83,7 +95,7 @@ export default function Pomodoro() {
           animate={{ y: 0, opacity: 1 }}
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          transition={{ duration: 1, type: "spring", stiffness: 400, damping: 17 }}
+          transition={{ duration: 1, type: "spring", stiffness: 140 }}
         >
           Reset
         </motion.button>
@@ -92,3 +104,4 @@ export default function Pomodoro() {
     </div>
   );
 }
+

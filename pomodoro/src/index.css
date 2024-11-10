@@ -1,20 +1,27 @@
 :root {
-  background-image: linear-gradient(
-    to bottom right,
-    #e5989b, 
-    #f09e8a,
-    #ffcdb2 
-  );
   font-family: "Chango";
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-
-  min-height: 100vh;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+body.focus-mode {
+  background-image: linear-gradient(to bottom right, #e5989b, #f09e8a, #ffcdb2);
+  min-height: 100vh;
+}
+
+body.break-mode {
+  background-image: linear-gradient(to bottom right, #3d5a80, #98c1d9, #e0fbfc);
+  min-height: 100vh;
 }
 
 .title {
