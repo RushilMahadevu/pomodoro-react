@@ -1,7 +1,7 @@
 # pomodoro-react
 **A simple aesthetic timer made in react to challenge myself to create something both simple and clean.**<br /><br />
 
-*still fixes needed between transition of focus to break*  <br /><br /><br /><br /><br />
+***still fixes needed between transition of focus to break***  <br /><br /><br /><br /><br />
 
 
 
