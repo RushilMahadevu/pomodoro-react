@@ -2,26 +2,111 @@
   font-family: "Chango";
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
 }
 
-body.focus-mode {
-  background-image: linear-gradient(to bottom right, #e5989b, #f09e8a, #ffcdb2);
-  min-height: 100vh;
+.music-controller {
+  display: inline-block;
+  padding: auto;
+  margin: 10px;
+  font-size: 2rem;
+  font-weight: bold;
+  border: 2px solid hsl(0, 0%, 10%);
+  border-radius: 10px;
+  padding: 10px;
+  background-color: hsl(0, 0%, 100%);
+  color: hsl(0, 0%, 10%);
 }
 
-body.break-mode {
-  background-image: linear-gradient(to bottom right, #3d5a80, #98c1d9, #e0fbfc);
-  min-height: 100vh;
+.music-controller:hover {
+  background-color: hsl(0, 0%, 95%);
+  cursor: pointer;
+}
+
+.music-controller:active {
+  background-color: hsl(0, 0%, 90%);
+}
+
+.volume-slider {
+  display: inline-block;
+  padding: auto;
+  margin-left: 40px;
+  width: 150px;
+  cursor: pointer;
+}
+
+/* Custom volume slider styles */
+.volume-slider[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 10px;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  border: 2px solid hsl(0, 0%, 10%);
+}
+
+.volume-slider[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 4px solid hsl(0, 0%, 10%);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.volume-slider[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background: white;
+  border: 2px solid hsl(0, 0%, 10%);
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.volume-slider[type="range"]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 20px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.volume-slider[type="range"]::-moz-range-track {
+  width: 100%;
+  height: 8px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.volume-slider[type="range"]:focus {
+  outline: none;
+}
+
+.volume-slider[type="range"]:hover::-webkit-slider-thumb {
+  background-color: hsl(0, 0%, 95%);
+}
+
+.volume-slider[type="range"]:hover::-moz-range-thumb {
+  background-color: hsl(0, 0%, 95%);
+}
+
+.volume-slider[type="range"]:active::-webkit-slider-thumb {
+  background-color: hsl(0, 0%, 90%);
+}
+
+.volume-slider[type="range"]:active::-moz-range-thumb {
+  background-color: hsl(0, 0%, 90%);
 }
 
 .title {
@@ -47,56 +132,24 @@ body.break-mode {
   -webkit-text-stroke: 4px hsl(0, 0%, 10%);
 }
 
+body.focus-mode {
+  background-image: linear-gradient(to bottom right, #e5989b, #f09e8a, #ffcdb2);
+  min-height: 100vh;
+}
+
+body.break-mode {
+  background-image: linear-gradient(to bottom right, #3d5a80, #98c1d9, #e0fbfc);
+  min-height: 100vh;
+}
+
 .button-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.start-button {
-  display: inline-block;
-  padding: auto;
-  margin: 10px;
-  font-size: 2rem;
-  font-weight: bold;
-  border: 2px solid hsl(0, 0%, 10%);
-  border-radius: 10px;
-  padding: 10px;
-  background-color: hsl(0, 0%, 90%);
-  color: hsl(0, 0%, 10%);
-}
-
-.start-button:hover {
-  background-color: hsl(0, 0%, 85%);
-  cursor: pointer;
-}
-
-.start-button:active {
-  background-color: hsl(0, 0%, 80%);
-}
-
-.pause-button {
-  display: inline-block;
-  padding: auto;
-  margin: 10px;
-  font-size: 2rem;
-  font-weight: bold;
-  border: 2px solid hsl(0, 0%, 10%);
-  border-radius: 10px;
-  padding: 10px;
-  background-color: hsl(0, 0%, 90%);
-  color: hsl(0, 0%, 10%);
-}
-
-.pause-button:hover {
-  background-color: hsl(0, 0%, 85%);
-  cursor: pointer;
-}
-
-.pause-button:active {
-  background-color: hsl(0, 0%, 80%);
-}
-
+.start-button,
+.pause-button,
 .reset-button {
   display: inline-block;
   padding: auto;
@@ -106,15 +159,19 @@ body.break-mode {
   border: 2px solid hsl(0, 0%, 10%);
   border-radius: 10px;
   padding: 10px;
-  background-color: hsl(0, 0%, 90%);
+  background-color: hsl(0, 0%, 100%);
   color: hsl(0, 0%, 10%);
 }
 
+.start-button:hover,
+.pause-button:hover,
 .reset-button:hover {
-  background-color: hsl(0, 0%, 85%);
+  background-color: hsl(0, 0%, 95%);
   cursor: pointer;
 }
 
+.start-button:active,
+.pause-button:active,
 .reset-button:active {
-  background-color: hsl(0, 0%, 80%);
+  background-color: hsl(0, 0%, 90%);
 }
